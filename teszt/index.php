@@ -855,7 +855,7 @@ session_start();
             function kieertekel() {
               var nev = $('#nev').val();
               var email = $('#email').val();
-              if (nev == '') {
+              if (nev == '' || email == '') {
                 new PNotify({
                     title: 'Hiba',
                     text: 'Ajjajjj nem töltötted ki az adatokat!',

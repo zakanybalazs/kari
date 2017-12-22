@@ -172,20 +172,10 @@ session_start();
           <script src="../chosen/chosen.jquery.js" charset="utf-8"></script>
           <link rel="stylesheet" href="../chosen/chosen.css">
           <label>Kitöltő neve</label>
-          <select class="chosen-select" id="nev">
-            <option selected disabled>Válassz</option>
-            <?php
-            if(!empty($_GET['nev'])) {
-              $nev = $_GET['nev'];
-              echo "<option selected>$nev</option>";
-            }
-            $q = "SELECT * FROM nevek";
-            $sq = mysqli_query($server, $q);
-            while ($sqa = mysqli_fetch_assoc($sq)) {?>
-              <option><?php echo $sqa['nevek'] ?></option>
-            <?php } ?>
-        </div>
-      </select>
+          <input type="text" id="nev" placeholder="Név megadása:" class="form-control">
+          <p></p>
+          <label>E-mail</label>
+          <input type="email" id="email" class="form-control" placeholder="myvaiapan@viapangroup.com">
       <script type="text/javascript">
         $(".chosen-select").chosen({width:"100%"});
         $('.chosen-select').val('Válassz');
@@ -864,6 +854,7 @@ session_start();
 
             function kieertekel() {
               var nev = $('#nev').val();
+              var email = $('#email').val();
               if (nev == '') {
                 new PNotify({
                     title: 'Hiba',
@@ -914,6 +905,7 @@ session_start();
                 arr[41] = {'a':a, 'b':b, 'c':c, 'd':d};
                 $.post("../ajax/ajax.teszt.php", {
                   nev: nev,
+                  email: email,
                   tipus: "Florence",
                   adatok: arr,
                 },

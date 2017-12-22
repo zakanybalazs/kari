@@ -8,6 +8,7 @@ $server = mysqli_connect($hostDB,$userDB,$passDB,$tableDB);
  $nev = mysqli_real_escape_string($server, $neve);
  $tipus = $_POST['tipus'];
  $adatok = $_POST['adatok'];
+ $emailcim = $_POST['email'];
  $adatok = json_encode($adatok);
 
 $q = "INSERT INTO teszt (nev, tipus, adatok) VALUES ('{$nev}','{$tipus}','{$adatok}')";
@@ -110,12 +111,6 @@ $q = "INSERT INTO teszt (nev, tipus, adatok) VALUES ('{$nev}','{$tipus}','{$adat
      $ertekeles = $swa['text'];
    }
 $count = 0;
-$neventer = $nev."\n";
-$q = "SELECT * FROM user WHERE realname = '{$nev}'";
-$sq = mysqli_query($server, $q);
-while($sqa = mysqli_fetch_assoc($sq)) {
-      $emailcim = $sqa['email'];
-}
 
 if (!$sq) {
   echo json_encode( $server->error );

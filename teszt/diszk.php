@@ -477,7 +477,7 @@ session_start();
                       return;
                     }
                 }
-                if (nev == '') {
+                if (nev == '' || email == '') {
                   new PNotify({
                       title: 'Hiba',
                       text: 'Ajjajjj nem töltötted ki az adatokat!',

@@ -131,10 +131,10 @@ $server = mysqli_connect($hostDB,$userDB,$passDB,$tableDB);
                   $nev = $_GET['nev'];
                   echo "<option selected>$nev</option>";
                 }
-                $q = "SELECT * FROM nevek";
+                $q = "SELECT * FROM teszt GROUP BY nev ORDER BY teszt_id DESC";
                 $sq = mysqli_query($server, $q);
                 while ($sqa = mysqli_fetch_assoc($sq)) {?>
-                  <option><?php echo $sqa['nevek'] ?></option>
+                  <option><?php echo $sqa['nev'] ?></option>
                 <?php } ?>
             </div>
           </select>
@@ -187,7 +187,9 @@ $server = mysqli_connect($hostDB,$userDB,$passDB,$tableDB);
               <?php } $x += 1; } ?>
               <script type="text/javascript">
                 $('.kit').on('click', function() {
-                  $('#kiv').val($(this).html());
+                  var kit = $(this).html();
+                  $('#nev').val(kit);
+                  $('#nev').trigger("chosen:updated");
                 })
               </script>
             </div>
